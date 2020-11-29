@@ -1,0 +1,53 @@
+﻿@model IEnumerable<DonatingFundsClient.Models.Organization>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>organizations List</h1>
+<a class="btn btn-primary" asp-action="PostOrganization" asp-controller="Organization">Add Organization</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalDonations)
+            </th>
+            <th>
+                <b>Actions</b>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrganizationName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalDonations)
+                </td>
+
+                <td>
+
+                    <a class="btn btn-success" href="@Url.Action("Index","Donar",new { id = item.Id })">View Donars</a>
+                    <a class="btn btn-success" href="@Url.Action("Create","Donar",new { id = item.Id })">Donate</a>
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
